@@ -5,6 +5,7 @@ const createCell = (dimensions) => {
     cell.classList.add("cell");
     cell.style.width = dimensions;
     cell.style.height = dimensions;
+    cell.addEventListener("mouseenter", handleCellHover);
     return cell;
 }
 
@@ -15,6 +16,10 @@ const fillGrid = (size = 16) => {
         const newCell = createCell(`${cellDimensions}px`);
         grid.append(newCell);
     }
+}
+
+const handleCellHover = (e) => {
+    e.target.style.backgroundColor = "black";
 }
 
 fillGrid();
