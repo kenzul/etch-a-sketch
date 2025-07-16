@@ -1,5 +1,7 @@
 const GRID_WIDTH = 600;
 
+let opacity = 0.1;
+
 const createCell = (dimensions) => {
     const cell = document.createElement("div");
     cell.classList.add("cell");
@@ -20,7 +22,14 @@ const fillGrid = (size = 16) => {
 
 const handleCellHover = (e) => {
     const randomRGB = generateRGB();
-    e.target.style.backgroundColor = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
+    e.target.style.backgroundColor = createRGBAColor(randomRGB, opacity);
+    if (opacity < 1) {
+        opacity += 0.1;
+    }
+}
+
+const createRGBAColor = (rgb, alpha) => {
+    return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${alpha})`;
 }
 
 const addResizeEvent = () => {
