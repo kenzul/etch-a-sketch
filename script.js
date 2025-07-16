@@ -22,4 +22,20 @@ const handleCellHover = (e) => {
     e.target.style.backgroundColor = "black";
 }
 
+const addResizeEvent = () => {
+    const resizeButton = document.querySelector(".resize-button");
+    resizeButton.addEventListener("click", handleResize);
+}
+
+const handleResize = (e) => {
+    const sizeInput = document.querySelector("#size");
+    if (sizeInput.value < 1 || sizeInput.value > 100) {
+        return;
+    }
+    const grid = document.querySelector(".grid");
+    grid.replaceChildren();
+    fillGrid(sizeInput.value);
+}
+
 fillGrid();
+addResizeEvent();
