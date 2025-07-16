@@ -19,7 +19,8 @@ const fillGrid = (size = 16) => {
 }
 
 const handleCellHover = (e) => {
-    e.target.style.backgroundColor = "black";
+    const randomRGB = generateRGB();
+    e.target.style.backgroundColor = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
 }
 
 const addResizeEvent = () => {
@@ -35,6 +36,15 @@ const handleResize = (e) => {
     const grid = document.querySelector(".grid");
     grid.replaceChildren();
     fillGrid(sizeInput.value);
+}
+
+const generateRGB = () => {
+    const RGB = [0, 0, 0];
+    for (let i = 0; i < 3; i++) {
+        const randomRGB = Math.floor(Math.random() * 256);
+        RGB[i] = randomRGB;
+    }
+    return RGB;
 }
 
 fillGrid();
